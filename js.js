@@ -44,6 +44,7 @@ const divide = function(a, b) {
 
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
+const numButtons = document.querySelectorAll('.numBtn')
 
 let currentValue = '0';
 
@@ -55,16 +56,22 @@ const updateDisplay = function(value) {
     }
     display.textContent = currentValue;
 }
-buttons.forEach(button => {
-    display
-})
-
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const buttonText = button.textContent;
-        updateDisplay(buttonText);
+        
+        if (button.classList.contains('numBtn')) {
+            updateDisplay(buttonText);
+        } else if (buttonText === 'AC') {
+            currentValue = '0';
+            display.textContent = currentValue;
+        } else if (buttonText === '=') {
+            
+        } else {
+
+        }
     });
-});
+})
 
 
