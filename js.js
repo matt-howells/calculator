@@ -1,4 +1,4 @@
-// operate function
+//general operate function
 
 let a = 0
 let b = 0
@@ -18,7 +18,7 @@ const operate = function(a, b, operator) {
     }
 }
 
-//math functions
+//basic math functions
 
 const add = function(a,b) {
     return a + b
@@ -38,4 +38,33 @@ const divide = function(a, b) {
     }
     return a / b;
 }
+
+// populate display 
+
+
+const display = document.querySelector('.display');
+const buttons = document.querySelectorAll('button');
+
+let currentValue = '0';
+
+const updateDisplay = function(value) {
+    if (currentValue === '0') {
+        currentValue = value;
+    } else {
+        currentValue += value
+    }
+    display.textContent = currentValue;
+}
+buttons.forEach(button => {
+    display
+})
+
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const buttonText = button.textContent;
+        updateDisplay(buttonText);
+    });
+});
+
 
