@@ -43,7 +43,13 @@ const numButtons = document.querySelectorAll('.numBtn')
 
 let currentValue = '0';
 
+const maxDisplayLength = 9;
+
 const updateDisplay = function(value) {
+    if (currentValue.length >= maxDisplayLength) {
+        return;  // Prevent updating the display if the max length is reached
+    }
+    
     if (currentValue === '0') {
         currentValue = value;
     } else {
@@ -80,7 +86,8 @@ buttons.forEach(button => {
            
             b = parseFloat(currentValue);
             const result = operate(a, b, operator);
-            currentValue = result.toString();
+            
+            currentValue = result.length > maxDisplayLength ? result.slice(0, maxDisplayLength) : result;
             display.textContent = currentValue;
 
             a = '';
